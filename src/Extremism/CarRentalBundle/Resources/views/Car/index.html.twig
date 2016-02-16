@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ExtremismCarRentalBundle:Car:index{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Car:index page</h1>
+    <div class="container">
+        {% for car in cars %}
+            <div class="p">
+                {{ car.name }}
+                {{ car.segment }}
+                {{ car.price }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+extremism_car_rental_homepage:
+    path:     /
+    defaults: { _controller: ExtremismCarRentalBundle:Default:index }
+extremism_car_rental_cars:
+    resource: "@ExtremismCarRentalBundle/Controller/CarController.php"
+    type: annotation
+    prefix: /
