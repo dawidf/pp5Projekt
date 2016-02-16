@@ -1,0 +1,188 @@
+<?php
+
+namespace Extremism\CarRentalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reservation
+ *
+ * @ORM\Table(name="reservation")
+ * @ORM\Entity(repositoryClass="Extremism\CarRentalBundle\Repository\ReservationRepository")
+ */
+class Reservation
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="reservedAt", type="date", nullable=true)
+     */
+    private $reservedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="rentedAt", type="date", nullable=true)
+     */
+    private $rentedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="reservationEndAt", type="datetime", nullable=true)
+     */
+    private $reservationEndAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="rentEndAt", type="date", nullable=true)
+     */
+    private $rentEndAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Extremism\CarRentalBundle\Entity\Car", inversedBy="reservation")
+     * @ORM\JoinColumn(name="id_reservation", referencedColumnName="id")
+     */
+    private $cars;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set reservedAt
+     *
+     * @param \DateTime $reservedAt
+     *
+     * @return Reservation
+     */
+    public function setReservedAt($reservedAt)
+    {
+        $this->reservedAt = $reservedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get reservedAt
+     *
+     * @return \DateTime
+     */
+    public function getReservedAt()
+    {
+        return $this->reservedAt;
+    }
+
+    /**
+     * Set rentedAt
+     *
+     * @param \DateTime $rentedAt
+     *
+     * @return Reservation
+     */
+    public function setRentedAt($rentedAt)
+    {
+        $this->rentedAt = $rentedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get rentedAt
+     *
+     * @return \DateTime
+     */
+    public function getRentedAt()
+    {
+        return $this->rentedAt;
+    }
+
+    /**
+     * Set reservationEndAt
+     *
+     * @param \DateTime $reservationEndAt
+     *
+     * @return Reservation
+     */
+    public function setReservationEndAt($reservationEndAt)
+    {
+        $this->reservationEndAt = $reservationEndAt;
+
+        return $this;
+    }
+
+    /**
+     * Get reservationEndAt
+     *
+     * @return \DateTime
+     */
+    public function getReservationEndAt()
+    {
+        return $this->reservationEndAt;
+    }
+
+    /**
+     * Set rentEndAt
+     *
+     * @param \DateTime $rentEndAt
+     *
+     * @return Reservation
+     */
+    public function setRentEndAt($rentEndAt)
+    {
+        $this->rentEndAt = $rentEndAt;
+
+        return $this;
+    }
+
+    /**
+     * Get rentEndAt
+     *
+     * @return \DateTime
+     */
+    public function getRentEndAt()
+    {
+        return $this->rentEndAt;
+    }
+
+    /**
+     * Set cars
+     *
+     * @param \Extremism\CarRentalBundle\Entity\Car $cars
+     *
+     * @return Reservation
+     */
+    public function setCars(\Extremism\CarRentalBundle\Entity\Car $cars = null)
+    {
+        $this->cars = $cars;
+
+        return $this;
+    }
+
+    /**
+     * Get cars
+     *
+     * @return \Extremism\CarRentalBundle\Entity\Car
+     */
+    public function getCars()
+    {
+        return $this->cars;
+    }
+}

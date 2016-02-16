@@ -1,0 +1,12 @@
+parameters:
+    car_entity: Extremism\CarRentalBundle\Entity\Car
+services:
+    car_metadata:
+        class: Extremism\CarRentalBundle\Entity\Car
+    extremism.service.car_service:
+        class: Extremism\CarRentalBundle\Storage\CarService
+        arguments: [ "@doctrine.orm.entity_manager" ]
+#    extremism_car_rental.example:
+#        class: Extremism\CarRentalBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
