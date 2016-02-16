@@ -1,0 +1,90 @@
+.nav a {
+  color: #5a5a5a;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}
+
+.nav li {
+  display: inline;
+}
+
+.jumbotron {
+  background:url(car.jpg);
+  height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron .container {
+  position: relative;
+  top:1px;
+}
+
+.jumbotron h1 {
+  color: black;
+  font-size: 48px;  
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
+
+.jumbotron p {
+  font-size: 20px;
+  color: #6E4444;
+}
+
+.learn-more {
+  background-color: #f7f7f7;
+}
+
+.learn-more h3 {
+  font-family: 'Shift', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.learn-more a {
+  color: #00b0ff;
+}
+
+.jumbo {
+  height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbo .container {
+  position: relative;
+  top:10px;
+}
+
+.jumbo h1 {
+  color: black;
+  font-size: 48px;  
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
+
+.jumbo p {
+  font-size: 20px;
+  color: #6E4444;
+}
+
+.lista {
+  position: relative;
+  height: 202px;
+}
+
+hr {
+  height: 2px;
+  color: #000000;
+  background-color: #000000;
+}
+
+h1 {
+    color: black;
+  font-size: 48px;  
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
