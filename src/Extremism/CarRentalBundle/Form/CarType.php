@@ -20,6 +20,7 @@ class CarType extends AbstractType
             ->add('price')
             ->add('isRented')
             ->add('isReserved')
+            ->add('shopId')
         ;
     }
     
