@@ -19,18 +19,18 @@ class CarRepository extends EntityRepository
         $qb
             ->where(
             $qb->expr()->andX(
-                $qb->expr()->gt(':currentDate', 'cars.endReservationAt'),
-                $qb->expr()->gt(':currentDate', 'cars.endRentAt')
+                $qb->expr()->lt(':currentDate', 'cars.endReservationAt'),
+                $qb->expr()->lt(':currentDate', 'cars.endRentAt')
 
 
             ))
             ->setParameter('currentDate', new \DateTime())
-            ->orWhere('cars.endRentAt IS NULL')
-            ->orWhere('cars.endReservationAt IS NULL')
-//            ->andWhere($qb->expr()->orX(
-//                $qb->expr()->isNull('cars.endReservationAt'),
-//                $qb->expr()->isNull('cars.endRentAt')
-//            ))
+//            ->orWhere('cars.endRentAt IS NULL')
+//            ->orWhere('cars.endReservationAt IS NULL')
+            ->orWhere($qb->expr()->orX(
+                $qb->expr()->isNull('cars.endReservationAt'),
+                $qb->expr()->isNull('cars.endRentAt')
+            ))
         ;
 
         return $qb->getQuery()->getArrayResult();

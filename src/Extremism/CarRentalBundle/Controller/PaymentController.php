@@ -92,7 +92,7 @@ class PaymentController extends Controller
 
 
 
-        return $this->render('', array('name' => 'dupa'));
+        return $this->render('', array('name' => 'ok'));
     }
 
     /**
@@ -108,13 +108,13 @@ class PaymentController extends Controller
      * @param Request $request
      * @param $carId
      * @return array
-     * @Route("/wypozycz-auto/{carId}", name="rent_car", defaults={"carId"=1})
+     * @Route("/wypozycz-auto/{carId}", name="rent_car")
      * @Template()
      */
     public function rentCarAction($carId, Request $request)
     {
         $carOrder = new CarOrder();
-        $form = $this->rentCreateForm($carOrder);
+        $form = $this->rentCreateForm($carOrder, $carId);
 
         $form->handleRequest($request);
 
@@ -155,10 +155,10 @@ class PaymentController extends Controller
             'form' => $form->createView(),
         ];
     }
-    public function rentCreateForm(CarOrder $carOrder)
+    public function rentCreateForm(CarOrder $carOrder, $carId)
     {
         $form = $this->createForm(PaymentType::class, $carOrder, [
-            'action' => $this->generateUrl('rent_car', ['carId' => 1]),
+            'action' => $this->generateUrl('rent_car', ['carId' => $carId]),
             'method' => 'POST',
         ]);
 

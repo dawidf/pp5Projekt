@@ -1,16 +1,28 @@
-{% extends "::base.html.twig" %}
+{% extends "ExtremismCarRentalBundle::base.html.twig" %}
 
-{% block title %}ExtremismCarRentalBundle:Car:index{% endblock %}
+{% block title %}Wypożycz samochód{% endblock %}
 
-{% block body %}
-    <h1>Welcome to the Car:index page</h1>
+{% block mainBody %}
+<div class="jumbo">
     <div class="container">
-        {% for car in cars %}
-            <div class="p">
-                {{ car.name }}
-                {{ car.segment }}
-                {{ car.price }}
-            </div>
-        {% endfor %}
+        <h1>Krok 1</h1>
+        <p>Wybierz z listy poniżej dowolny samochód</p>   <br />
+        <div class="lista">
+            {% for car in cars %}
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="c4.png" width="420px" height="200px" />
+                    </div>
+                    <div class="col-md-7">
+                        <h3>{{ car.name }}</h3>
+                        <p>{{ car.description }}</p>
+                        <p><b>{{ car.price }}</b></p>
+                        <p><a href="{{ path( 'rent_car', {'carId': car.id}) }}">Biorę!</a></p>
+                    </div>
+                </div> <hr/>
+
+            {% endfor %}
+        </div>
     </div>
+</div>
 {% endblock %}

@@ -54,9 +54,14 @@ class Car
      */
     private $endRentAt;
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+    /**
      * @ORM\OneToMany(targetEntity="Extremism\CarRentalBundle\Entity\CarOrder", mappedBy="cars")
      */
     private $carOrder;
+
     
     /**
      * Constructor
@@ -219,6 +224,26 @@ class Car
     {
         return $this->endRentAt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     * @return Car
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+
 
     /**
      * Add carOrder

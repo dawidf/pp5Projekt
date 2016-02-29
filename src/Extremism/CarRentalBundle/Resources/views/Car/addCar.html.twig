@@ -1,20 +1,25 @@
-{% extends '::base.html.twig' %}
+{% extends 'ExtremismCarRentalBundle::base.html.twig' %}
 
-{% block body %}
-    {% for flash_message in app.session.flashbag.get('error') %}
-        <div class="flash-notice">
-            {{ flash_message }}
-        </div>
-    {% endfor %}
-    {% for flash_message in app.session.flashbag.get('success') %}
-        <div class="flash-notice">
-            {{ flash_message }}
-        </div>
-    {% endfor %}
-    asdasd
-{% endblock %}
+{% block mainBody %}
 
-{% block title %}
-dupa
+
+    <div class="jumbo">
+        <div class="container">
+
+            {% for flash_message in app.session.flashbag.get('error') %}
+                <div class="flash-notice">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('success') %}
+                <div class="flash-notice">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+
+            {% form_theme(':default:index.html.twig') %}
+            {{ form(form) }}
+        </div>
+    </div>
 {% endblock %}
 
