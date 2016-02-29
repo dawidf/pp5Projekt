@@ -46,24 +46,24 @@ class Car
      */
     private $startReservationAt;
     /**
-     * @ORM\Column(type="date", name="end_reservation_at", nullable=true)
+     * @ORM\Column(type="datetime", name="end_reservation_at", nullable=true)
      */
     private $endReservationAt;
     /**
-     * @ORM\Column(type="datetime", name="end_rent_at")
+     * @ORM\Column(type="date", name="end_rent_at")
      */
     private $endRentAt;
     /**
      * @ORM\OneToMany(targetEntity="Extremism\CarRentalBundle\Entity\CarOrder", mappedBy="cars")
      */
     private $carOrder;
+    
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->reservation = new ArrayCollection();
-        $this->carOrder = new ArrayCollection();
+        $this->carOrder = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -221,47 +221,13 @@ class Car
     }
 
     /**
-     * Add reservation
-     *
-     * @param Reservation $reservation
-     *
-     * @return Car
-     */
-    public function addReservation(Reservation $reservation)
-    {
-        $this->reservation[] = $reservation;
-
-        return $this;
-    }
-
-    /**
-     * Remove reservation
-     *
-     * @param Reservation $reservation
-     */
-    public function removeReservation(Reservation $reservation)
-    {
-        $this->reservation->removeElement($reservation);
-    }
-
-    /**
-     * Get reservation
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getReservation()
-    {
-        return $this->reservation;
-    }
-
-    /**
      * Add carOrder
      *
-     * @param CarOrder $carOrder
+     * @param \Extremism\CarRentalBundle\Entity\CarOrder $carOrder
      *
      * @return Car
      */
-    public function addCarOrder(CarOrder $carOrder)
+    public function addCarOrder(\Extremism\CarRentalBundle\Entity\CarOrder $carOrder)
     {
         $this->carOrder[] = $carOrder;
 
@@ -271,9 +237,9 @@ class Car
     /**
      * Remove carOrder
      *
-     * @param CarOrder $carOrder
+     * @param \Extremism\CarRentalBundle\Entity\CarOrder $carOrder
      */
-    public function removeCarOrder(CarOrder $carOrder)
+    public function removeCarOrder(\Extremism\CarRentalBundle\Entity\CarOrder $carOrder)
     {
         $this->carOrder->removeElement($carOrder);
     }

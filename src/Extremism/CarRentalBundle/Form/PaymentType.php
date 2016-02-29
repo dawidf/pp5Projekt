@@ -10,15 +10,16 @@ class PaymentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->setAction('https.dotpay.pl/test_payment/');
         $builder
             ->add('name')
             ->add('surname')
             ->add('phone')
             ->add('city')
             ->add('email')
-            ->add('postcode')
+            ->add('postalcode')
+            ->add('forDays')
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -3,6 +3,7 @@
 namespace Extremism\CarRentalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Extremism\CarRentalBundle\Entity\Car;
 
 /**
  * CarOrder
@@ -22,9 +23,15 @@ class CarOrder
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Extremism\CarRentalBundle\Entity\Car", inversedBy="carOrder")
+     * @ORM\JoinColumn(name="id_car", referencedColumnName="id")
+     */
+    private $cars;
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="CreatedAt", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
@@ -66,21 +73,43 @@ class CarOrder
     /**
      * @var string
      *
-     * @ORM\Column(name="postalCode", type="string", length=40)
+     * @ORM\Column(name="postal_code", type="string", length=40)
      */
     private $postalCode;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Extremism\CarRentalBundle\Entity\Car", inversedBy="carOrder")
-     * @ORM\JoinColumn(name="id_car", referencedColumnName="id")
+     * @var integer
+     *
+     * @ORM\Column(name="for_days", nullable=true)
      */
-    private $cars;
+    private $forDays;
+
+    /**
+     * @ORM\Column(name="operation_number", type="string", nullable=true)
+     */
+    private $operationNumber;
+    /**
+     * @ORM\Column(name="operation_status", type="string", nullable=true)
+     */
+    private $operationStatus;
+    /**
+     * @ORM\Column(name="operation_currency", type="decimal", nullable=true)
+     */
+    private $operationCurrency;
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
 
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -256,37 +285,109 @@ class CarOrder
     }
 
     /**
-     * Set car
+     * Set operationNumber
      *
-     * @param \stdClass $car
+     * @param string $operationNumber
      *
      * @return CarOrder
      */
-    public function setCar($car)
+    public function setOperationNumber($operationNumber)
     {
-        $this->car = $car;
+        $this->operationNumber = $operationNumber;
 
         return $this;
     }
 
     /**
-     * Get car
+     * Get operationNumber
      *
-     * @return \stdClass
+     * @return string
      */
-    public function getCar()
+    public function getOperationNumber()
     {
-        return $this->car;
+        return $this->operationNumber;
+    }
+
+    /**
+     * Set operationStatus
+     *
+     * @param string $operationStatus
+     *
+     * @return CarOrder
+     */
+    public function setOperationStatus($operationStatus)
+    {
+        $this->operationStatus = $operationStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get operationStatus
+     *
+     * @return string
+     */
+    public function getOperationStatus()
+    {
+        return $this->operationStatus;
+    }
+
+    /**
+     * Set operationCurrency
+     *
+     * @param string $operationCurrency
+     *
+     * @return CarOrder
+     */
+    public function setOperationCurrency($operationCurrency)
+    {
+        $this->operationCurrency = $operationCurrency;
+
+        return $this;
+    }
+
+    /**
+     * Get operationCurrency
+     *
+     * @return string
+     */
+    public function getOperationCurrency()
+    {
+        return $this->operationCurrency;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return CarOrder
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
      * Set cars
      *
-     * @param \Extremism\CarRentalBundle\Entity\Car $cars
+     * @param Car $cars
      *
      * @return CarOrder
      */
-    public function setCars(\Extremism\CarRentalBundle\Entity\Car $cars = null)
+    public function setCars(Car $cars = null)
     {
         $this->cars = $cars;
 
@@ -296,10 +397,34 @@ class CarOrder
     /**
      * Get cars
      *
-     * @return \Extremism\CarRentalBundle\Entity\Car
+     * @return Car
      */
     public function getCars()
     {
         return $this->cars;
+    }
+
+    /**
+     * Set forDays
+     *
+     * @param string $forDays
+     *
+     * @return CarOrder
+     */
+    public function setForDays($forDays)
+    {
+        $this->forDays = $forDays;
+
+        return $this;
+    }
+
+    /**
+     * Get forDays
+     *
+     * @return string
+     */
+    public function getForDays()
+    {
+        return $this->forDays;
     }
 }

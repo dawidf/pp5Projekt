@@ -4,6 +4,8 @@ namespace Extremism\CarRentalBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Extremism\CarRentalBundle\Entity\CarOrder;
+use Extremism\CarRentalBundle\Entity\Reservation;
 
 /**
  * Car
@@ -52,12 +54,8 @@ class Car
      */
     private $endRentAt;
     /**
-     * @ORM\OneToMany(targetEntity="Extremism\CarRentalBundle\Entity\Reservation", mappedBy="cars")
-     */
-    private $reservation;
-
-    /**
      * @ORM\OneToMany(targetEntity="Extremism\CarRentalBundle\Entity\CarOrder", mappedBy="cars")
      */
     private $carOrder;
+    
 }
